@@ -1,0 +1,34 @@
+{
+    "items":[
+        {
+            "id":1,
+            "name":"Küçük oda",
+            "personNumber":"1 Kişilik"
+        },
+        {
+            "id":2,
+            "name":"Renkli Oda",
+            "personNumber":"3 Kişilik"
+        },
+        {
+            "id":3,
+            "name":"Rahat oda",
+            "personNumber":"4 Kişilik"
+        },
+        {
+            "id":4,
+            "name":"Rahat oda",
+            "personNumber":"4 Kişilik"
+        },
+        {
+            "id":5,
+            "name":"Geniş oda",
+            "personNumber":"5 Kişilik"
+        },
+        {
+            "id":6,
+            "name":"Sunum Odası",
+            "personNumber":"6 Kişilik"
+        }
+    ]
+}

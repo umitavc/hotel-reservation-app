@@ -21,7 +21,7 @@ class _BottomNavigatorBarScreenState extends State<BottomNavigatorBarScreen> wit
 
   late final PageController _pageController;
   final List<Widget> _bottomNavScreen = <Widget>[
-    const HomeScreen(),
+     HomeScreen(),
     const RoomsScreen(),
     const RoomsScreen(),
     const RoomsScreen(),
