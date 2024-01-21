@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hotel_reservation_app/core/routers/app_router.dart';
-import 'package:hotel_reservation_app/features/home/home_screen.dart';
+import 'package:hotel_reservation_app/features/bottom_navbar_screen/bloc/bottom_nav_bar_bloc.dart';
+import 'package:hotel_reservation_app/features/home_screen/home_screen.dart';
 import 'package:hotel_reservation_app/features/shared/app_theme.dart';
 
 void main() {
@@ -18,9 +19,9 @@ class MyApp extends StatelessWidget {
     
     return MultiBlocProvider(
       providers: [
-        // BlocProvider<BottomNavBarBloc>(
-        //   create: (_) => BottomNavBarBloc(),
-        // ),
+        BlocProvider<BottomNavBarBloc>(
+          create: (_) => BottomNavBarBloc(),
+        ),
        
         // Diğer BlocProvider'ları buraya ekleyin.
       ],
