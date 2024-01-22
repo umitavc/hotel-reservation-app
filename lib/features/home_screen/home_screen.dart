@@ -117,72 +117,92 @@ class _HomeScreenState extends State<HomeScreen> {
                       shrinkWrap: true,
                       itemCount: hotelFilteredList.length,
                       itemBuilder: (context, index) {
-                        return Column(
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(16.0),
-                              child: Image.asset(
-                                'assets/images/OffisMekan-isim.png',
-                                fit: BoxFit.cover,
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(
+                                color: Colors.black.withOpacity(0.2),
                               ),
                             ),
-                            Image.asset(
-                              'assets/images/rooms.png',
-                              fit: BoxFit.fill,
-                              width: double.infinity,
-                            ),
-                            Container(
-                              height: 71,
-                              decoration: const BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(16),
-                                  bottomRight: Radius.circular(16),
+                            child: Column(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(10),
+                                    topRight: Radius.circular(10),
+                                  ),
+                                  child: Image.asset(
+                                    'assets/images/OffisMekan-isim.png',
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
-                              ),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                ClipRRect(
+                                  borderRadius: const BorderRadius.only(
+                                    bottomLeft: Radius.circular(10),
+                                    bottomRight: Radius.circular(10),
+                                  ),
+                                  child: Image.asset(
+                                    'assets/images/rooms.png',
+                                    fit: BoxFit.fill,
+                                    width: double.infinity,
+                                  ),
+                                ),
+                                Container(
+                                  height: 71,
+                                  decoration: const BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(16),
+                                      bottomRight: Radius.circular(16),
+                                    ),
+                                  ),
+                                  child: Column(
                                     children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 16, top: 16),
-                                        child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              hotelFilteredList[index].roomType.displayString,
-                                              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
-                                            ),
-                                            const SizedBox(
-                                              height: 4,
-                                            ),
-                                            Row(
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.only(left: 16, top: 16),
+                                            child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
-                                                SvgPicture.asset('assets/svg/people.svg'),
-                                                const SizedBox(
-                                                  width: 4,
-                                                ),
                                                 Text(
-                                                  hotelFilteredList[index].personNumber.displayString,
-                                                  style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: Colors.black),
+                                                  hotelFilteredList[index].roomType.displayString,
+                                                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
+                                                ),
+                                                const SizedBox(
+                                                  height: 4,
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    SvgPicture.asset('assets/svg/people.svg'),
+                                                    const SizedBox(
+                                                      width: 4,
+                                                    ),
+                                                    Text(
+                                                      hotelFilteredList[index].personNumber.displayString,
+                                                      style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: Colors.black),
+                                                    ),
+                                                  ],
                                                 ),
                                               ],
                                             ),
-                                          ],
-                                        ),
+                                          ),
+                                          Padding(
+                                              padding: const EdgeInsets.only(right: 16, top: 16),
+                                              child: CustomButtonWidget(
+                                                text: 'Rezerve Et',
+                                              )),
+                                        ],
                                       ),
-                                      Padding(
-                                          padding: const EdgeInsets.only(right: 16, top: 16),
-                                          child: CustomButtonWidget(
-                                            text: 'Rezerve Et',
-                                          )),
                                     ],
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         );
                       },
                     ),

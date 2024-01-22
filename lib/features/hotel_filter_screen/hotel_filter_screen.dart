@@ -2,15 +2,11 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:hotel_reservation_app/core/data/models/category_model.dart';
-import 'package:hotel_reservation_app/core/data/models/person_number_model.dart';
 import 'package:hotel_reservation_app/core/routers/app_router.dart';
-import 'package:hotel_reservation_app/features/components/custom_button_widget.dart';
 import 'package:hotel_reservation_app/features/hotel_filter_screen/bloc/filter_bloc.dart';
 import 'package:hotel_reservation_app/features/hotel_filter_screen/bloc/filter_state.dart';
 import 'package:hotel_reservation_app/features/hotel_filter_screen/widgets/custom_category_filter.dart';
 import 'package:hotel_reservation_app/features/hotel_filter_screen/widgets/custom_person_filter.dart';
-import 'package:hotel_reservation_app/features/hotel_filter_screen/widgets/filter_container_button.dart';
 import 'package:hotel_reservation_app/features/shared/colors.dart';
 
 @RoutePage()

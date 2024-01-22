@@ -24,12 +24,14 @@ class CustomCategoryFilter extends StatelessWidget {
         if (state is FilterLoaded) {
           return Wrap(
             spacing: 16,
+            runSpacing: 10,
             alignment: WrapAlignment.center,
             children: state.filter.categoryFilters
                 .asMap()
                 .entries
                 .map(
                   (category) => InkWell(
+
                     onTap: () {
                       context.read<FilterBloc>().add(
                             UpdateCategoryFilter(
@@ -40,14 +42,8 @@ class CustomCategoryFilter extends StatelessWidget {
                           );
                     },
                     child: Container(
-                      margin: const EdgeInsets.only(
-                        top: 10,
-                        bottom: 10,
-                      ),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 40,
-                        vertical: 10,
-                      ),
+                      
+                      
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5.0),
                         border: Border.all(
@@ -56,9 +52,12 @@ class CustomCategoryFilter extends StatelessWidget {
                         ),
                         color: state.filter.categoryFilters[category.key].value ? Colors.grey.shade400 : Colors.white,
                       ),
-                      child: Text(
-                        state.filter.categoryFilters[category.key].category.name,
-                        style: Theme.of(context).textTheme.bodyMedium,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 8),
+                        child: Text(
+                          state.filter.categoryFilters[category.key].category.name,
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
                       ),
                     ),
                   ),

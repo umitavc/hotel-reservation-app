@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hotel_reservation_app/features/hotel_filter_screen/bloc/filter_bloc.dart';
 import 'package:hotel_reservation_app/features/hotel_filter_screen/bloc/filter_state.dart';
-import 'package:hotel_reservation_app/core/data/models/person_number_model.dart';
 
 class CustomPersonNumberFilter extends StatelessWidget {
   const CustomPersonNumberFilter({Key? key});
@@ -21,6 +20,7 @@ class CustomPersonNumberFilter extends StatelessWidget {
         if (state is FilterLoaded) {
           return Wrap(
             spacing: 16,
+            runSpacing: 10,
             alignment: WrapAlignment.center,
             children: state.filter.personNumberFilters
                 .asMap()
@@ -39,14 +39,8 @@ class CustomPersonNumberFilter extends StatelessWidget {
                           );
                     },
                     child: Container(
-                      margin: const EdgeInsets.only(
-                        top: 10,
-                        bottom: 10,
-                      ),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 40,
-                        vertical: 10,
-                      ),
+                      
+                      
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5.0),
                         border: Border.all(
@@ -55,9 +49,12 @@ class CustomPersonNumberFilter extends StatelessWidget {
                         ),
                         color: state.filter.personNumberFilters[personNumber.key].value ? Colors.grey.shade400 : Colors.white,
                       ),
-                      child: Text(
-                        state.filter.personNumberFilters[personNumber.key].personNumber.personNumber,
-                        style: Theme.of(context).textTheme.bodyMedium,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 8),
+                        child: Text(
+                          state.filter.personNumberFilters[personNumber.key].personNumber.personNumber,
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
                       ),
                     ),
                   ),
