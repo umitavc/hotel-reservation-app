@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 class FilterButtonWidget extends StatelessWidget {
-  FilterButtonWidget({super.key, this.text = '' , this.color = Colors.white});
+  FilterButtonWidget({super.key, this.text = '' , this.color = Colors.white, this.onPressed});
 
   String text;
   Color color;
+  VoidCallback? onPressed;
   
 
   @override

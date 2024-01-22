@@ -2,33 +2,68 @@
     "items":[
         {
             "id":1,
-            "name":"Küçük oda",
-            "personNumber":"1 Kişilik"
+            "roomType":"smallRoom",
+            "personNumber": "one"
         },
         {
             "id":2,
-            "name":"Renkli Oda",
-            "personNumber":"3 Kişilik"
+            "roomType":"colorfulRoom",
+            "personNumber":"two"
         },
         {
             "id":3,
-            "name":"Rahat oda",
-            "personNumber":"4 Kişilik"
+            "roomType":"comfortableRoom",
+            "personNumber":"three"
         },
         {
             "id":4,
-            "name":"Rahat oda",
-            "personNumber":"4 Kişilik"
+            "roomType":"uncomfortableRoom",
+            "personNumber":"four"
         },
         {
             "id":5,
-            "name":"Geniş oda",
-            "personNumber":"5 Kişilik"
+            "roomType":"wideRoom",
+            "personNumber":"five"
         },
         {
             "id":6,
-            "name":"Sunum Odası",
-            "personNumber":"6 Kişilik"
+            "roomType":"presentationRoom",
+            "personNumber":"six"
+        },
+        {
+            "id":7,
+            "roomType":"smallRoom",
+            "personNumber": "one"
+        },
+        {
+            "id":8,
+            "roomType":"colorfulRoom",
+            "personNumber":"two"
+        },
+        {
+            "id":9,
+            "roomType":"comfortableRoom",
+            "personNumber":"three"
+        },
+        {
+            "id":10,
+            "roomType":"uncomfortableRoom",
+            "personNumber":"four"
+        },
+        {
+            "id":11,
+            "roomType":"wideRoom",
+            "personNumber":"five"
+        },
+        {
+            "id":12,
+            "roomType":"presentationRoom",
+            "personNumber":"six"
+        },
+        {
+            "id":12,
+            "roomType":"studyRoom",
+            "personNumber":"six"
         }
     ]
 }

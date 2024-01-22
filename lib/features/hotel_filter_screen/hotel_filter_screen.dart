@@ -2,10 +2,16 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hotel_reservation_app/core/data/models/category_model.dart';
+import 'package:hotel_reservation_app/core/data/models/person_number_model.dart';
+import 'package:hotel_reservation_app/core/routers/app_router.dart';
 import 'package:hotel_reservation_app/features/components/custom_button_widget.dart';
+import 'package:hotel_reservation_app/features/hotel_filter_screen/bloc/filter_bloc.dart';
+import 'package:hotel_reservation_app/features/hotel_filter_screen/bloc/filter_state.dart';
+import 'package:hotel_reservation_app/features/hotel_filter_screen/widgets/custom_category_filter.dart';
+import 'package:hotel_reservation_app/features/hotel_filter_screen/widgets/custom_person_filter.dart';
 import 'package:hotel_reservation_app/features/hotel_filter_screen/widgets/filter_container_button.dart';
 import 'package:hotel_reservation_app/features/shared/colors.dart';
-
 
 @RoutePage()
 class FilterScreen extends StatelessWidget {
@@ -58,44 +64,55 @@ class FilterScreen extends StatelessWidget {
                       style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                     ),
                   ),
-                  Wrap(
-                    spacing: 10,
-                    runSpacing: 10,
-                    children: List.generate(10, (index) {
-                      return FilterButtonWidget(
-                          text: 'Oda',
-                          color : Colors.grey ,
-                        );
-                    }),
-                  ),
+                  const CustomCategoryFilter(),
                   const Padding(
                     padding: EdgeInsets.symmetric(
                       vertical: 16,
                     ),
                     child: Text(
-                      'Oda Tipi',
+                      'Oda Saysısı',
                       style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                     ),
                   ),
-                  Wrap(
-                    spacing: 10,
-                    runSpacing: 10,
-                    children: List.generate(10, (index) {
-                      return FilterButtonWidget(
-                          text: 'Oda',
-                          color : Colors.grey ,
-                        );
-                    }),
-                  ),
+                  const CustomPersonNumberFilter(),
                   const Spacer(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      CustomButtonWidget(
-                        text: "Temizle",
-                        iconActive: false,
+                      BlocBuilder<FilterBloc, FilterState>(
+                        builder: (context, state) {
+                          if (state is FilterLoading) {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          }
+                          if (state is FilterLoaded) {
+                            return ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  padding: const EdgeInsets.symmetric(horizontal: 50),
+                                  shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(10),
+                                    ),
+                                  ),
+                                  backgroundColor: AppColors.buttonColor),
+                              child: const Text(
+                                'Apply',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              onPressed: () {
+                                var categories = state.filter.categoryFilters.where((filter) => filter.value).map((filter) => filter.category).toList();
+
+                                var personNumbers = state.filter.personNumberFilters.where((filter) => filter.value).map((filter) => filter.personNumber).toList();
+
+                                context.router.push(const HomeRoute());
+                              },
+                            );
+                          } else {
+                            return const Text('Something went wrong.');
+                          }
+                        },
                       ),
-                      CustomButtonWidget(text: "Uygula"),
                     ],
                   )
                 ],
