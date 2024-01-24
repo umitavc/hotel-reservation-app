@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hotel_reservation_app/core/routers/app_router.dart';
 import 'package:hotel_reservation_app/features/bottom_navbar_screen/bloc/bottom_nav_bar_bloc.dart';
+import 'package:hotel_reservation_app/features/home_screen/bloc/home_screen_bloc.dart';
+import 'package:hotel_reservation_app/features/home_screen/bloc/home_screen_event.dart';
 import 'package:hotel_reservation_app/features/hotel_filter_screen/bloc/filter_bloc.dart';
 import 'package:hotel_reservation_app/features/shared/app_theme.dart';
 
@@ -23,6 +25,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => FilterBloc()..add(LoadFilter()),
+        ),
+        BlocProvider(
+          create: (context) => HomeScreenBloc()..add(FetchDataEvent()),
         ),
         
 

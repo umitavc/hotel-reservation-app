@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hotel_reservation_app/core/routers/app_router.dart';
+import 'package:hotel_reservation_app/features/home_screen/bloc/home_screen_bloc.dart';
+import 'package:hotel_reservation_app/features/home_screen/bloc/home_screen_event.dart';
 import 'package:hotel_reservation_app/features/hotel_filter_screen/bloc/filter_bloc.dart';
 import 'package:hotel_reservation_app/features/hotel_filter_screen/bloc/filter_state.dart';
 import 'package:hotel_reservation_app/features/hotel_filter_screen/widgets/custom_category_filter.dart';
@@ -100,8 +102,10 @@ class FilterScreen extends StatelessWidget {
                                 var categories = state.filter.categoryFilters.where((filter) => filter.value).map((filter) => filter.category).toList();
 
                                 var personNumbers = state.filter.personNumberFilters.where((filter) => filter.value).map((filter) => filter.personNumber).toList();
+                                
 
-                                context.router.push(const HomeRoute());
+                               
+                                context.router.pop(state.filter);
                               },
                             );
                           } else {
