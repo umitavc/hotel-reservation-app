@@ -14,43 +14,64 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
   HomeScreenBloc() : super(HomeScreenLoading()) {
     on<HomeScreenEvent>((event, emit) async {
       if (event is FetchDataEvent) {
-        await _fetchData(emit, filter: event.filter);
+        await _fetchData(emit,filter: event.filter);
       }
+     
     });
   }
 
-  Future<void> _fetchData(Emitter<HomeScreenState> emit, {Filter? filter}) async {
-    try {
-      emit(HomeScreenLoading());
-      await readJson();
-
-      emit(DataLoadedState(filteredHotelList(filter: filter)));
-    } catch (error) {
-      emit(ErrorState(error.toString()));
+    Future<void> _fetchData(Emitter<HomeScreenState> emit,{Filter? filter})async{
+        try {
+        // await _test();
+         //return;
+          emit(HomeScreenLoading());
+        await readJson();
+       
+        emit(DataLoadedState (filteredHotelList(filter: filter)));
+      } catch (error) {
+        emit(ErrorState(error.toString()));
+      }
     }
-  }
+
 
   List<Hotel> items = List<Hotel>.empty(growable: true);
 
   Future<void> readJson() async {
-    final String response = await rootBundle.loadString("assets/json/new_hotel.json");
+    final String response =
+        await rootBundle.loadString("assets/json/hotel.json");
     final data = await json.decode(response);
 
-    items = (data["items"] as List).map((data) => Hotel.fromJson(data as Map<String, dynamic>)).toList();
-    final filter = newFilter.Filter.fromJson(data);
+    items = (data["items"] as List).map((data) =>
+        Hotel.fromJson(data as Map<String, dynamic>)).toList();
   }
 
   List<Hotel> filteredHotelList({Filter? filter}) {
-    if (filter != null && (filter.categoryFilters.any((element) => element.value) || filter.personNumberFilters.any((element) => element.value))) {
-      final categoryFilter = filter.categoryFilters.where((element) => element.value == true);
-      final personFilter = filter.personNumberFilters.where((element) => element.value == true);
+    if (filter != null &&
+        (filter.categoryFilters.any((element) => element.value) ||
+            filter.personNumberFilters.any((element) => element.value))) {
+      final categoryFilter =
+          filter.categoryFilters.where((element) => element.value == true);
+      final personFilter =
+          filter.personNumberFilters.where((element) => element.value == true);
       return items.where((hotel) {
-        final bool eachOtherOK = (categoryFilter.isEmpty ? true : categoryFilter.any((cf) => cf.category.roomType == hotel.roomType)) && (personFilter.isEmpty ? true : personFilter.any((pf) => pf.personNumber.personNumberEnum == hotel.personNumber));
+        final bool eachOtherOK = (categoryFilter.isEmpty
+                ? true
+                : categoryFilter.any(
+                    (cf) => cf.category.roomType == hotel.roomType)) &&
+            (personFilter.isEmpty
+                ? true
+                : personFilter.any(
+                    (pf) => pf.personNumber.personNumberEnum ==
+                        hotel.personNumber));
 
         if (eachOtherOK) {
           return true;
         } else {
-          return categoryFilter.isNotEmpty && (personFilter.isEmpty ? false : personFilter.any((pf) => pf.personNumber.personNumberEnum == hotel.personNumber));
+          return categoryFilter.isNotEmpty &&
+              (personFilter.isEmpty
+                  ? false
+                  : personFilter.any((pf) =>
+                      pf.personNumber.personNumberEnum == hotel.personNumber));
         }
       }).toList();
     } else {
@@ -58,34 +79,43 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
     }
   }
 
-  Future<void> _test() async {
-    try {
-      final data = await json.decode(_testdata);
 
-      final filter = newFilter.Filter.fromJson(data);
+
+  Future<void> _test ()async
+  {
+
+    try {
+      final   data = await json.decode(_testdata);
+
+
+      final filter =newFilter.Filter.fromJson(data);
+
 
       print(filter.resultMessage.toJson());
-      print(filter.result.toJson());
+      print(filter.result .toJson());
+
 
       print(filter.result.filter.map((e) => print(e.sectionName + "\n")));
 
-      filter.result.filter
-          .map((e) => Column(
-                children: [
-                  Text(e.sectionName),
-                  Wrap(
-                    children: e.values.map((e) => Text(e.name)).toList(),
-                  ),
-                ],
-              ))
-          .toList();
+
+      filter.result.filter.map((e) => Column(
+        children: [
+          Text(e.sectionName),
+          Wrap(
+            children: e.values.map((e) => Text(e.name)).toList(),
+          ),
+        ],
+      )).toList();
+
     } catch (e) {
       debugPrint(e.toString());
     }
-  }
+  } 
 
-  String get _testdata =>
-      """{
+
+
+
+  String get _testdata => """{
   "result_message" : {
     "type" : "success",
     "title" : "Bilgi",

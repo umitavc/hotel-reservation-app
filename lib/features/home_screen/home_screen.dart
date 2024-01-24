@@ -81,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
               body: SafeArea(
                 child: Column(
                   children: [
-                    const CustomContainerFilter(),
+                  
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -122,7 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       ),
                                     ),
                                     Container(
-                                      height: 71,
+                                      height: MediaQuery.of(context).size.height * 0.09,
                                       decoration: const BoxDecoration(
                                         color: Colors.white,
                                         borderRadius: BorderRadius.only(
@@ -144,6 +144,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                       hotelFilteredList[index].roomType.displayString,
                                                       style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
                                                     ),
+                                                    
                                                     const SizedBox(
                                                       height: 4,
                                                     ),

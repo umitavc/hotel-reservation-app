@@ -25,7 +25,7 @@ class CustomCategoryFilter extends StatelessWidget {
           return Wrap(
             spacing: 16,
             runSpacing: 10,
-            alignment: WrapAlignment.center,
+            alignment: WrapAlignment.start,
             children: state.filter.categoryFilters
                 .asMap()
                 .entries
