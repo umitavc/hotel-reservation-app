@@ -81,172 +81,172 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
 
 
 
-  Future<void> _test ()async
-  {
+//   Future<void> _test ()async
+//   {
 
-    try {
-      final   data = await json.decode(_testdata);
-
-
-      final filter =newFilter.Filter.fromJson(data);
+//     try {
+//       final   data = await json.decode(_testdata);
 
 
-      print(filter.resultMessage.toJson());
-      print(filter.result .toJson());
+//       final filter =newFilter.Filter.fromJson(data);
 
 
-      print(filter.result.filter.map((e) => print(e.sectionName + "\n")));
+//       print(filter.resultMessage.toJson());
+//       print(filter.result .toJson());
 
 
-      filter.result.filter.map((e) => Column(
-        children: [
-          Text(e.sectionName),
-          Wrap(
-            children: e.values.map((e) => Text(e.name)).toList(),
-          ),
-        ],
-      )).toList();
-
-    } catch (e) {
-      debugPrint(e.toString());
-    }
-  } 
+//       print(filter.result.filter.map((e) => print(e.sectionName + "\n")));
 
 
+//       filter.result.filter.map((e) => Column(
+//         children: [
+//           Text(e.sectionName),
+//           Wrap(
+//             children: e.values.map((e) => Text(e.name)).toList(),
+//           ),
+//         ],
+//       )).toList();
+
+//     } catch (e) {
+//       debugPrint(e.toString());
+//     }
+//   } 
 
 
-  String get _testdata => """{
-  "result_message" : {
-    "type" : "success",
-    "title" : "Bilgi",
-    "message" : "Başarılı"
-  },
-  "result" : {
-    "filter" : [
-      {
-        "sectionName" : "Etkinlik Çeşidi",
-        "type" : "single",
-        "col" : "tag",
-        "values" : [
-          {
-            "id" : "finansal",
-            "name" : "Finansal",
-            "isSelected" : false
-          },
-          {
-            "id" : "teknoloji",
-            "name" : "Teknoloji",
-            "isSelected" : false
-          },
-          {
-            "id" : "yasam",
-            "name" : "Yaşam",
-            "isSelected" : false
-          },
-          {
-            "id" : "cocuklar",
-            "name" : "Çocuklar",
-            "isSelected" : false
-          },
-          {
-            "id" : "saglik",
-            "name" : "Sağlık",
-            "isSelected" : false
-          }
-        ]
-      },
-      {
-        "sectionName" : "Bilet Fiyatı",
-        "type" : "multi",
-        "col" : "price",
-        "values" : [
-          {
-            "id" : "0",
-            "name" : "0₺",
-            "isSelected" : false
-          },
-          {
-            "id" : "1",
-            "name" : "1₺",
-            "isSelected" : false
-          },
-          {
-            "id" : "2",
-            "name" : "2₺",
-            "isSelected" : false
-          },
-          {
-            "id" : "3",
-            "name" : "3₺",
-            "isSelected" : false
-          },
-          {
-            "id" : "5",
-            "name" : "5₺",
-            "isSelected" : false
-          },
-          {
-            "id" : "10",
-            "name" : "10₺",
-            "isSelected" : false
-          },
-          {
-            "id" : "12",
-            "name" : "12₺",
-            "isSelected" : false
-          },
-          {
-            "id" : "30",
-            "name" : "30₺",
-            "isSelected" : false
-          },
-          {
-            "id" : "40",
-            "name" : "40₺",
-            "isSelected" : false
-          },
-          {
-            "id" : "50",
-            "name" : "50₺",
-            "isSelected" : false
-          },
-          {
-            "id" : "80",
-            "name" : "80₺",
-            "isSelected" : false
-          },
-          {
-            "id" : "123",
-            "name" : "123₺",
-            "isSelected" : false
-          },
-          {
-            "id" : "500",
-            "name" : "500₺",
-            "isSelected" : false
-          }
-        ]
-      }
-    ],
-    "sort" : {
-      "sectionName" : "Sırala",
-      "type" : "single",
-      "col" : "startTime",
-      "values" : [
-        {
-          "isSelected" : true,
-          "id" : "startTime",
-          "name" : "Tarihe Göre Artan",
-          "col" : "startTime"
-        },
-        {
-          "isSelected" : false,
-          "id" : "-startTime",
-          "name" : "Tarihe Göre Azalan",
-          "col" : "startTime"
-        }
-   ]
-}
-}
-}""";
+
+
+//   String get _testdata => """{
+//   "result_message" : {
+//     "type" : "success",
+//     "title" : "Bilgi",
+//     "message" : "Başarılı"
+//   },
+//   "result" : {
+//     "filter" : [
+//       {
+//         "sectionName" : "Etkinlik Çeşidi",
+//         "type" : "single",
+//         "col" : "tag",
+//         "values" : [
+//           {
+//             "id" : "finansal",
+//             "name" : "Finansal",
+//             "isSelected" : false
+//           },
+//           {
+//             "id" : "teknoloji",
+//             "name" : "Teknoloji",
+//             "isSelected" : false
+//           },
+//           {
+//             "id" : "yasam",
+//             "name" : "Yaşam",
+//             "isSelected" : false
+//           },
+//           {
+//             "id" : "cocuklar",
+//             "name" : "Çocuklar",
+//             "isSelected" : false
+//           },
+//           {
+//             "id" : "saglik",
+//             "name" : "Sağlık",
+//             "isSelected" : false
+//           }
+//         ]
+//       },
+//       {
+//         "sectionName" : "Bilet Fiyatı",
+//         "type" : "multi",
+//         "col" : "price",
+//         "values" : [
+//           {
+//             "id" : "0",
+//             "name" : "0₺",
+//             "isSelected" : false
+//           },
+//           {
+//             "id" : "1",
+//             "name" : "1₺",
+//             "isSelected" : false
+//           },
+//           {
+//             "id" : "2",
+//             "name" : "2₺",
+//             "isSelected" : false
+//           },
+//           {
+//             "id" : "3",
+//             "name" : "3₺",
+//             "isSelected" : false
+//           },
+//           {
+//             "id" : "5",
+//             "name" : "5₺",
+//             "isSelected" : false
+//           },
+//           {
+//             "id" : "10",
+//             "name" : "10₺",
+//             "isSelected" : false
+//           },
+//           {
+//             "id" : "12",
+//             "name" : "12₺",
+//             "isSelected" : false
+//           },
+//           {
+//             "id" : "30",
+//             "name" : "30₺",
+//             "isSelected" : false
+//           },
+//           {
+//             "id" : "40",
+//             "name" : "40₺",
+//             "isSelected" : false
+//           },
+//           {
+//             "id" : "50",
+//             "name" : "50₺",
+//             "isSelected" : false
+//           },
+//           {
+//             "id" : "80",
+//             "name" : "80₺",
+//             "isSelected" : false
+//           },
+//           {
+//             "id" : "123",
+//             "name" : "123₺",
+//             "isSelected" : false
+//           },
+//           {
+//             "id" : "500",
+//             "name" : "500₺",
+//             "isSelected" : false
+//           }
+//         ]
+//       }
+//     ],
+//     "sort" : {
+//       "sectionName" : "Sırala",
+//       "type" : "single",
+//       "col" : "startTime",
+//       "values" : [
+//         {
+//           "isSelected" : true,
+//           "id" : "startTime",
+//           "name" : "Tarihe Göre Artan",
+//           "col" : "startTime"
+//         },
+//         {
+//           "isSelected" : false,
+//           "id" : "-startTime",
+//           "name" : "Tarihe Göre Azalan",
+//           "col" : "startTime"
+//         }
+//    ]
+// }
+// }
+// }""";
 }
